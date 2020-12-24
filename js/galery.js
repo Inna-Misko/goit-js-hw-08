@@ -3,7 +3,9 @@ import galleryItems from './gallery-items.js';
 const refs = {
  galleryRef: document.querySelector('.js-gallery'),
   lightbox: document.querySelector('.lightbox'),
-  btn: document.querySelector('[data-action="close-lightbox"]')
+  btn: document.querySelector('[data-action="close-lightbox"]'),
+src: document.querySelector('.lightbox__image'),
+alt: document.querySelector('.lightbox__image')
 };
 
 
@@ -20,15 +22,15 @@ const createList = galleryItems.map(image => {
 const finalList = createList.join(' ')
 refs.galleryRef.insertAdjacentHTML('afterbegin', finalList)
 
-refs.galleryRef.addEventListener('click', clickEvent)
+
 
 function clickEvent(e) {
   e.preventDefault();
-  
+
   if(e.target.nodeName === 'IMG') {
     refs.lightbox.classList.add('is-open');
-    refs.lightbox.querySelector('.lightbox__image').src = e.target.src;
-    refs.lightbox.querySelector('.lightbox__image').alt = e.target.alt;
+refs.lightbox.querySelector('.lightbox__image').src = e.target.dataset.source;
+    refs.lightbox.querySelector('.lightbox__image').alt = e.target.alt;;
   }
 }
 
