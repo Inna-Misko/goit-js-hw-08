@@ -25,7 +25,6 @@ refs.galleryRef.insertAdjacentHTML('afterbegin', finalList)
 function clickEvent(e) {
   e.preventDefault();
   if (e.target.nodeName === 'IMG') {
-
     refs.lightbox.classList.add('is-open');
 refs.lightbox.querySelector('.lightbox__image').src = e.target.dataset.source;
     refs.lightbox.querySelector('.lightbox__image').alt = e.target.alt;;
@@ -33,7 +32,6 @@ refs.lightbox.querySelector('.lightbox__image').src = e.target.dataset.source;
 }
 
 function closeEvent(e) {
-   
   if(e.target.nodeName === "I" || e.target.nodeName === "BUTTON") {
     refs.lightbox.classList.remove('is-open');
     refs.lightbox.setAttribute("src", "")
