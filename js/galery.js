@@ -3,9 +3,7 @@ import galleryItems from './gallery-items.js';
 const refs = {
  galleryRef: document.querySelector('.js-gallery'),
   lightbox: document.querySelector('.lightbox'),
-  btn: document.querySelector('[data-action="close-lightbox"]'),
-src: document.querySelector('.lightbox__image'),
-alt: document.querySelector('.lightbox__image')
+  btn: document.querySelector('[data-action="close-lightbox"]')
 };
 
 
@@ -26,8 +24,8 @@ refs.galleryRef.insertAdjacentHTML('afterbegin', finalList)
 
 function clickEvent(e) {
   e.preventDefault();
-
-  if(e.target.nodeName === 'IMG') {
+  if (e.target.nodeName === 'IMG') {
+    refs.lightbox.setAttribute("src", "")
     refs.lightbox.classList.add('is-open');
 refs.lightbox.querySelector('.lightbox__image').src = e.target.dataset.source;
     refs.lightbox.querySelector('.lightbox__image').alt = e.target.alt;;
@@ -35,6 +33,7 @@ refs.lightbox.querySelector('.lightbox__image').src = e.target.dataset.source;
 }
 
 function closeEvent(e) {
+   
   if(e.target.nodeName === "I" || e.target.nodeName === "BUTTON") {
     refs.lightbox.classList.remove('is-open');
   }
